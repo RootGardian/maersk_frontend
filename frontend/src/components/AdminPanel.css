@@ -1,0 +1,765 @@
+/* AdminPanel.css - Style Espace Administration Maersk */
+
+:root {
+  --maersk-blue: #42b6e9;
+  --maersk-dark-blue: #00243d;
+  --maersk-navy: #061727;
+  --bg-admin: #f8fafc;
+  --card-bg: #ffffff;
+  --border-light: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --accent-green: #059669;
+}
+
+.admin-layout {
+  min-height: 100vh;
+  background-color: var(--bg-admin);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  padding-top: 62px; /* Push content down below fixed header */
+}
+
+/* HEADER BAR */
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--maersk-dark-blue);
+  color: #ffffff;
+  padding: 12px 28px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.admin-logo {
+  height: 38px;
+  width: auto;
+}
+
+.admin-brand h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.admin-subtitle {
+  font-size: 0.76rem;
+  color: var(--maersk-blue);
+}
+
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.switch-view-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--maersk-blue);
+  background: rgba(66, 182, 233, 0.12);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.switch-view-btn:hover {
+  background: var(--maersk-blue);
+  color: #00243d;
+}
+
+.admin-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-role-badge {
+  background: #f59e0b;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+.admin-user-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+/* NOTIFICATION */
+.admin-notif {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  margin: 16px 28px 0 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.admin-notif.success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.admin-notif.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.admin-notif button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* EXCEL NAVBAR */
+.excel-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #00243d;
+  padding: 10px 24px;
+  border-top: 1px solid rgba(66, 182, 233, 0.2);
+  border-bottom: 1px solid rgba(66, 182, 233, 0.2);
+  margin-top: 0;
+  position: sticky;
+  top: 62px;
+  z-index: 900;
+}
+
+.excel-nav-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.excel-nav-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.excel-nav-btn.active {
+  color: #ffffff;
+  background: var(--maersk-blue);
+  color: #00243d;
+  box-shadow: 0 2px 8px rgba(66, 182, 233, 0.3);
+}
+
+.excel-nav-divider {
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 300;
+}
+
+/* METRICS CARDS ROW */
+.admin-metrics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 20px 28px 0 28px;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.metric-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.metric-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.metric-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--maersk-dark-blue);
+  margin-top: 4px;
+}
+
+/* MAIN CONTAINER WITH TABS */
+.admin-main {
+  padding: 20px 24px 40px 24px;
+  max-width: 100%;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border-light);
+  padding-bottom: 8px;
+}
+
+.admin-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.admin-tab.active {
+  background: var(--maersk-dark-blue);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 36, 61, 0.2);
+}
+
+.admin-tab-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.admin-grid-split {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+}
+
+.admin-card {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+}
+
+.admin-card-header {
+  padding: 14px 18px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.admin-card-header h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--maersk-dark-blue);
+  margin: 0;
+}
+
+/* FORM STYLES */
+.admin-form {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid #94a3b8;
+  font-size: 0.95rem;
+  color: #0f172a !important;
+  outline: none;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--maersk-blue);
+  box-shadow: 0 0 0 3px rgba(66, 182, 233, 0.15);
+}
+
+.form-group input[disabled],
+.form-group select[disabled],
+.form-group textarea[disabled] {
+  background: #f1f5f9;
+  color: #1e293b !important;
+  font-weight: 600;
+  opacity: 1;
+  -webkit-text-fill-color: #1e293b;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.admin-submit-btn {
+  padding: 11px;
+  border-radius: 6px;
+  border: none;
+  background: var(--maersk-dark-blue);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.2s;
+}
+
+.admin-submit-btn:hover {
+  background: #001729;
+}
+
+/* TABLES */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  background: #f8fafc;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.admin-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.85rem;
+  vertical-align: middle;
+  color: #1e293b;
+}
+
+.admin-table td strong {
+  color: #0f172a;
+}
+
+.role-select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.status-badge.active, .status-badge.approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge.inactive, .status-badge.pending {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.toggle-status-btn {
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+  background: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toggle-status-btn:hover {
+  background: #f1f5f9;
+}
+
+/* EXCEL NAVBAR MATCHING USER IMAGE 1 */
+.excel-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #0b1118;
+  padding: 10px 28px;
+  border-bottom: 2px solid var(--border-light);
+  overflow-x: auto;
+}
+
+.excel-nav-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-weight: 800;
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.excel-nav-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.excel-nav-btn.active {
+  background: #ffffff;
+  color: #00243d;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+  border-bottom: 3px solid #059669;
+}
+
+.excel-nav-divider {
+  color: #475569;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+/* BUTTON GROUPS & EXCEL ACTIONS */
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subtext {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.excel-import-btn,
+.excel-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.excel-import-btn {
+  background: #059669;
+  color: #ffffff;
+  border: 1px solid #047857;
+}
+
+.excel-import-btn:hover {
+  background: #047857;
+}
+
+.excel-export-btn {
+  background: #00243d;
+  color: #ffffff;
+  border: 1px solid #061727;
+}
+
+.excel-export-btn:hover {
+  background: #42b6e9;
+  color: #00243d;
+}
+
+/* EXCEL STYLED TABLES & RESIZABLE COLUMNS */
+.excel-table-container {
+  max-height: calc(100vh - 240px);
+  overflow: auto;
+  border: 1px solid #cbd5e1;
+}
+
+.excel-styled-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.84rem;
+  table-layout: auto;
+}
+
+.excel-styled-table th,
+.excel-styled-table td {
+  padding: 8px 14px;
+  border-right: 1px solid #cbd5e1;
+  border-bottom: 1px solid #cbd5e1;
+  box-sizing: border-box;
+  resize: horizontal;
+  overflow: auto;
+}
+
+.excel-styled-table th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  user-select: none;
+}
+
+/* Image 2 style: Blue/Grey Excel headers */
+.excel-header-row th {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-align: left;
+  border-color: #1d4ed8;
+}
+
+/* Image 3 & 5 style: Bright Blue with dropdown indicator */
+.excel-header-row-blue th {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-align: left;
+  border-color: #1d4ed8;
+}
+
+/* Image 4 style: Dark Grey Excel header */
+.excel-header-row-dark th {
+  background-color: #334155;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-align: left;
+  border-color: #1e293b;
+}
+
+.excel-styled-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.excel-styled-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+.text-center-muted {
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* LOADING SPINNER ANIMATION */
+.admin-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+  color: var(--maersk-dark-blue);
+}
+
+.maersk-spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid rgba(66, 182, 233, 0.2);
+  border-top-color: var(--maersk-blue);
+  border-right-color: var(--maersk-dark-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.admin-loading-text {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--maersk-dark-blue);
+}
+
+/* PAGINATION STYLES (50 items per page) */
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #f8fafc;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.pagination-info {
+  font-weight: 600;
+}
+
+.pagination-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  background: #ffffff;
+  color: var(--maersk-dark-blue);
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: var(--maersk-dark-blue);
+  color: #ffffff;
+  border-color: var(--maersk-dark-blue);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-btn.active {
+  background: var(--maersk-blue);
+  color: #00243d;
+  border-color: var(--maersk-blue);
+}
+
+@media (max-width: 900px) {
+  .admin-grid-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .admin-metrics-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+  }
+  .admin-header-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .admin-metrics-container {
+    grid-template-columns: 1fr;
+  }
+  .excel-nav-bar {
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-card-header.flex-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .btn-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .excel-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .excel-styled-table {
+    white-space: nowrap;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+

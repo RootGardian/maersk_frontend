@@ -1,0 +1,320 @@
+/* Login.css - Charte Graphique Officielle MAERSK (Plein Écran) */
+
+:root {
+  --maersk-blue: #42b6e9;          /* Cyan / Bleu Maersk Officiel */
+  --maersk-dark-blue: #00243d;     /* Bleu Nuit / Marine Maersk Officiel */
+  --maersk-dark-hover: #001729;    /* Survol sombre */
+  --maersk-accent-blue: #0077c8;   /* Bleu accentuation */
+  --text-dark: #111827;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+.login-split-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+}
+
+/* LEFT PANEL (Charte Bleu Marine Maersk - Plein Écran) */
+.login-left-panel {
+  flex: 1;
+  position: relative;
+  background-color: var(--maersk-dark-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* Formes Géométriques Décoratives */
+.circle-decor {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(66, 182, 233, 0.15) 0%, rgba(0, 36, 61, 0) 70%);
+  pointer-events: none;
+}
+
+.circle-1 {
+  width: 600px;
+  height: 600px;
+  top: -180px;
+  left: -180px;
+}
+
+.circle-2 {
+  width: 450px;
+  height: 450px;
+  bottom: -120px;
+  right: -80px;
+}
+
+.circle-3 {
+  width: 320px;
+  height: 320px;
+  top: 30%;
+  left: 10%;
+}
+
+/* Grille de points décorative (Bottom Left) */
+.dot-grid-decor {
+  position: absolute;
+  bottom: 36px;
+  left: 36px;
+  display: grid;
+  grid-template-columns: repeat(5, 6px);
+  gap: 8px;
+  opacity: 0.4;
+}
+
+.dot-grid-decor span {
+  width: 6px;
+  height: 6px;
+  background-color: var(--maersk-blue);
+  border-radius: 50%;
+}
+
+/* Left Content */
+.branding-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  border-radius: 20px;
+  padding: 8px;
+}
+
+.branding-logo {
+  max-width: 220px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+}
+
+.branding-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.branding-tagline {
+  font-size: 1rem;
+  color: var(--maersk-blue);
+  margin-top: 8px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* RIGHT PANEL (Blanc Épuré) */
+.login-right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 40px;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.form-box {
+  width: 100%;
+  max-width: 420px;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+}
+
+.form-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  line-height: 1.45;
+}
+
+/* Error Badge */
+.error-badge {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 24px;
+}
+
+/* Form inputs */
+.split-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #4b5563;
+  text-transform: uppercase;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-left {
+  position: absolute;
+  left: 14px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 13px 14px 13px 44px;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-dark);
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrapper input:focus {
+  border-color: var(--maersk-blue);
+  box-shadow: 0 0 0 3px rgba(66, 182, 233, 0.2);
+}
+
+.eye-toggle-btn {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.eye-toggle-btn:hover {
+  color: var(--maersk-blue);
+}
+
+/* Bouton Principale aux Couleurs Maersk */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  background-color: var(--maersk-dark-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--maersk-dark-hover);
+  box-shadow: 0 6px 16px rgba(0, 36, 61, 0.25);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Footer text */
+.right-panel-footer {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.right-panel-footer p {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .login-split-container {
+    flex-direction: column;
+  }
+  .login-left-panel {
+    padding: 40px 20px;
+    flex: 0.4;
+  }
+  .login-right-panel {
+    flex: 0.6;
+    padding: 40px 20px;
+  }
+  .branding-title {
+    font-size: 1.8rem;
+  }
+  .right-panel-footer {
+    position: static;
+    margin-top: 30px;
+  }
+}
