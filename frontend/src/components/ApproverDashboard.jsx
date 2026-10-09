@@ -34,9 +34,9 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
     socket.on('new_request', (req) => {
       const msg = `Nouvelle demande (PO: ${req.requestNo}) reçue !`;
       showNotification('success', msg);
-      
+
       setNotificationsList(prev => [{ id: Date.now(), text: msg, read: false, time: new Date() }, ...prev]);
-      
+
       fetchRequests(); // Refresh list automatically
     });
 
@@ -121,7 +121,7 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
         const queue = JSON.parse(localStorage.getItem('maersk_approver_queue') || '[]');
         queue.push({ url, method: 'PATCH', payload });
         localStorage.setItem('maersk_approver_queue', JSON.stringify(queue));
-        
+
         showNotification('success', `Mode hors ligne : L'approbation a été sauvegardée et sera synchronisée au retour d'Internet.`);
         setRequests(prev => prev.map(r => r.id === id ? { ...r, status: 'APPROVED' } : r));
         setSelectedRequest(null);
@@ -153,7 +153,7 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
         const queue = JSON.parse(localStorage.getItem('maersk_approver_queue') || '[]');
         queue.push({ url, method: 'PATCH', payload });
         localStorage.setItem('maersk_approver_queue', JSON.stringify(queue));
-        
+
         showNotification('success', `Mode hors ligne : Le rejet a été sauvegardé et sera synchronisé au retour d'Internet.`);
         setRequests(prev => prev.map(r => r.id === id ? { ...r, status: 'REJECTED' } : r));
         setSelectedRequest(null);
@@ -196,10 +196,10 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
     }
   };
 
-  const pendingRequests = requests.filter(r => 
+  const pendingRequests = requests.filter(r =>
     (r.status === 'PENDING' || !r.status) && r.approvedBy?.id === currentUser.id
   );
-  const historyRequests = requests.filter(r => 
+  const historyRequests = requests.filter(r =>
     (r.status === 'APPROVED' || r.status === 'REJECTED') && r.approvedBy?.id === currentUser.id
   );
 
@@ -218,17 +218,17 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
 
         <div className="approver-user-profile">
           {onSwitchToForm && (
-            <button className="logout-btn" onClick={onSwitchToForm} title="Basculer vers Création Bon de Commande" style={{ background: '#10b981', color: 'white', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', marginRight: '10px' }}>
+            <button className="back-admin-btn" onClick={onSwitchToForm} title="Espace Création">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
                 <path d="M12 20h9"></path>
                 <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"></path>
               </svg>
-              <span>Espace Création</span>
+              <span>Espace Comptabilité</span>
             </button>
           )}
           <span className="approver-role-badge">APPROUVEUR</span>
           <span className="approver-user-name">{currentUser?.firstName} {currentUser?.lastName}</span>
-          
+
           <div style={{ position: 'relative' }}>
             <button className="logout-btn" onClick={() => {
               setShowNotificationsDropdown(!showNotificationsDropdown);
@@ -298,13 +298,13 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
       <main className="approver-main">
         <div className="approver-sidebar">
           <div className="approver-tabs">
-            <button 
+            <button
               className={`approver-tab ${activeTab === 'pending' ? 'active' : ''}`}
               onClick={() => { setActiveTab('pending'); setSelectedRequest(null); }}
             >
               En attente ({pendingRequests.length})
             </button>
-            <button 
+            <button
               className={`approver-tab ${activeTab === 'history' ? 'active' : ''}`}
               onClick={() => { setActiveTab('history'); setSelectedRequest(null); }}
             >
@@ -319,8 +319,8 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
               <div className="approver-empty-list">Aucune commande {activeTab === 'pending' ? 'en attente' : 'dans l\'historique'}</div>
             ) : (
               displayedRequests.map(req => (
-                <div 
-                  key={req.id} 
+                <div
+                  key={req.id}
                   className={`approver-list-item ${selectedRequest?.id === req.id ? 'selected' : ''}`}
                   onClick={() => setSelectedRequest(req)}
                 >
@@ -349,7 +349,7 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
               <div className="details-header" style={{ marginBottom: '20px' }}>
                 <span className={`status-badge large ${selectedRequest.status?.toLowerCase()}`}>{selectedRequest.status}</span>
               </div>
-              
+
               <div className="pdf-template" style={{ padding: '40px', fontFamily: 'Arial, sans-serif', color: '#000', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '8px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
                   <div style={{ width: '40%' }}>
@@ -533,15 +533,15 @@ export default function ApproverDashboard({ currentUser, onLogout, onSwitchToFor
               </div>
             )}
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={() => setShowSettings(false)}
                 style={{ padding: '8px 16px', borderRadius: '6px', background: '#f1f5f9', border: '1px solid #cbd5e1', cursor: 'pointer', color: '#0f172a' }}
               >
                 Fermer
               </button>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={saveSignature}
                 style={{ padding: '8px 16px', borderRadius: '6px', background: '#00243d', color: 'white', border: 'none', cursor: 'pointer' }}
               >

@@ -153,7 +153,7 @@ export default function PurchaseOrderForm({ currentUser, onLogout, onSwitchToAdm
         });
       }
       if (Array.isArray(usersRes)) {
-        const approversList = usersRes.filter(u => u.role === 'APPROVER' && u.isActive !== false);
+        const approversList = usersRes.filter(u => (u.role === 'APPROVER' || u.role === 'ACCOUNTANT_APPROVER') && u.isActive !== false);
         setApprovers(approversList);
         localStorage.setItem('maersk_users', JSON.stringify(approversList));
       }
@@ -535,7 +535,7 @@ export default function PurchaseOrderForm({ currentUser, onLogout, onSwitchToAdm
             </button>
           )}
           {onSwitchToApprover && (
-            <button className="switch-admin-btn" onClick={onSwitchToApprover}>
+            <button className="back-admin-btn" onClick={onSwitchToApprover} title="Espace Approbation">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
                 <path d="M9 11l3 3L22 4"></path>
                 <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
@@ -969,14 +969,14 @@ export default function PurchaseOrderForm({ currentUser, onLogout, onSwitchToAdm
                   <div className="total-row align-center">
                     <span>TAX (TVA %)</span>
                     <div className="cost-input-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <input
-                        type="number"
-                        min="0"
-                        placeholder="0"
-                        style={{ width: '60px', textAlign: 'center' }}
+                      <select
+                        style={{ width: '80px', padding: '6px', borderRadius: '4px', border: '1px solid #cbd5e1', textAlign: 'center' }}
                         value={taxPercent}
                         onChange={(e) => setTaxPercent(e.target.value)}
-                      />
+                      >
+                        <option value="0">0</option>
+                        <option value="18">18</option>
+                      </select>
                       <span style={{ fontSize: '0.85rem', fontWeight: 'bold' }}>% = {calculatedTax.toLocaleString()} {currency}</span>
                     </div>
                   </div>

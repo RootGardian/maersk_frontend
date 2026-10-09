@@ -545,3 +545,24 @@
   }
 }
 
+.back-admin-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--maersk-blue, #42b6e9);
+  color: #00243d;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-right: 8px;
+}
+
+.back-admin-btn:hover {
+  background: #ffffff;
+  color: #00243d;
+  box-shadow: 0 2px 8px rgba(66, 182, 233, 0.4);
+}
