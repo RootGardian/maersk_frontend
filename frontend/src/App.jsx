@@ -24,6 +24,10 @@ function App() {
         setCurrentUser(parsed);
         if (parsed.role === 'ADMIN') {
           setCurrentView('admin');
+        } else if (parsed.role === 'APPROVER') {
+          setCurrentView('approver');
+        } else if (parsed.role === 'ACCOUNTANT_APPROVER') {
+          setCurrentView('form'); // Vue par défaut pour ce rôle
         } else {
           setCurrentView('form');
         }
@@ -37,6 +41,10 @@ function App() {
     setCurrentUser(user);
     if (user.role === 'ADMIN') {
       setCurrentView('admin');
+    } else if (user.role === 'APPROVER') {
+      setCurrentView('approver');
+    } else if (user.role === 'ACCOUNTANT_APPROVER') {
+      setCurrentView('form');
     } else {
       setCurrentView('form');
     }
@@ -78,21 +86,23 @@ function App() {
   }
 
   // Vue Approbateur
-  if (currentUser.role === 'APPROVER') {
+  if (currentUser.role === 'APPROVER' || (currentUser.role === 'ACCOUNTANT_APPROVER' && currentView === 'approver')) {
     return (
       <ApproverDashboard
         currentUser={currentUser}
         onLogout={handleLogout}
+        onSwitchToForm={currentUser.role === 'ACCOUNTANT_APPROVER' ? () => setCurrentView('form') : null}
       />
     );
   }
 
-  // Vue Bon de Commande / Facture (Comptables & Accès Admin)
+  // Vue Bon de Commande / Facture (Comptables & Accès Admin & Accountant Approver)
   return (
     <PurchaseOrderForm
       currentUser={currentUser}
       onLogout={handleLogout}
       onSwitchToAdmin={currentUser.role === 'ADMIN' ? () => setCurrentView('admin') : null}
+      onSwitchToApprover={currentUser.role === 'ACCOUNTANT_APPROVER' ? () => setCurrentView('approver') : null}
     />
   );
 }

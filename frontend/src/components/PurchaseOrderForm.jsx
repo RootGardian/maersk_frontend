@@ -5,7 +5,7 @@ import './PurchaseOrderForm.css';
 import html2pdf from 'html2pdf.js';
 import io from 'socket.io-client';
 
-export default function PurchaseOrderForm({ currentUser, onLogout, onSwitchToAdmin }) {
+export default function PurchaseOrderForm({ currentUser, onLogout, onSwitchToAdmin, onSwitchToApprover }) {
   const [activeTab, setActiveTab] = useState('create');
 
   const [companies, setCompanies] = useState([]);
@@ -532,6 +532,15 @@ export default function PurchaseOrderForm({ currentUser, onLogout, onSwitchToAdm
                 <polyline points="12 19 5 12 12 5"></polyline>
               </svg>
               <span>Panneau Admin</span>
+            </button>
+          )}
+          {onSwitchToApprover && (
+            <button className="switch-admin-btn" onClick={onSwitchToApprover} style={{ background: '#3b82f6', color: 'white' }}>
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+              </svg>
+              <span>Espace Approbation</span>
             </button>
           )}
           <div className="user-avatar">

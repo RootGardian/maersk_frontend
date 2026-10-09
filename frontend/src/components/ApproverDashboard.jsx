@@ -4,7 +4,7 @@ import { API_URL } from '../config';
 import './ApproverDashboard.css';
 import io from 'socket.io-client';
 
-export default function ApproverDashboard({ currentUser, onLogout }) {
+export default function ApproverDashboard({ currentUser, onLogout, onSwitchToForm }) {
   const [requests, setRequests] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [activeTab, setActiveTab] = useState('pending'); // 'pending' | 'history'
@@ -217,6 +217,15 @@ export default function ApproverDashboard({ currentUser, onLogout }) {
         </div>
 
         <div className="approver-user-profile">
+          {onSwitchToForm && (
+            <button className="logout-btn" onClick={onSwitchToForm} title="Basculer vers Création Bon de Commande" style={{ background: '#10b981', color: 'white', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', marginRight: '10px' }}>
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+              <span>Espace Création</span>
+            </button>
+          )}
           <span className="approver-role-badge">APPROUVEUR</span>
           <span className="approver-user-name">{currentUser?.firstName} {currentUser?.lastName}</span>
           

@@ -1480,6 +1480,7 @@ export default function AdminPanel({ currentUser, onLogout, onSwitchToForm }) {
                         >
                           <option value="ACCOUNTANT">ACCOUNTANT (Comptable / Saisisseur)</option>
                           <option value="APPROVER">APPROVER (Valideur / Approbateur)</option>
+                          <option value="ACCOUNTANT_APPROVER">ACCOUNTANT_APPROVER (Comptable + Approbateur)</option>
                           <option value="ADMIN">ADMIN (Administrateur)</option>
                         </select>
                       </div>
@@ -1520,6 +1521,7 @@ export default function AdminPanel({ currentUser, onLogout, onSwitchToForm }) {
                                 >
                                   <option value="ACCOUNTANT">ACCOUNTANT</option>
                                   <option value="APPROVER">APPROVER</option>
+                                  <option value="ACCOUNTANT_APPROVER">ACCOUNTANT_APPROVER</option>
                                   <option value="ADMIN">ADMIN</option>
                                 </select>
                               </td>
